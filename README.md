@@ -26,11 +26,13 @@ cqlsh 192.168.1.202 -e "SELECT peer, data_center, rack FROM system.peers;"
 #### 3. Настроить ssh для возможности подключения с 1.197 к 1.200
 
 ```bash
-# Настройка SSH сервера и пароля в первом контейнере
+# Установка SSH сервера в контейнере
 docker exec -it cassandra-cluster-cassandra1-1 bash -c "
-  sed -i 's/PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+  apt-get update && \
+  apt-get install -y openssh-server && \
+  sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
   echo 'root:root' | chpasswd && \
-  service ssh restart
+  service ssh start
   "
 ```
 
