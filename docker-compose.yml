@@ -1,7 +1,7 @@
 services:
   # Главная, seed 1
   cassandra1:
-    build: cassandra:5.0.5
+    image: cassandra:5.0.5
     environment:
       - CASSANDRA_SEEDS=192.168.1.200,192.168.1.201   # список seed нод
       - CASSANDRA_BROADCAST_ADDRESS=192.168.1.200
