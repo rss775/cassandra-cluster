@@ -64,3 +64,6 @@ sudo ip route del 192.168.1.200/32 dev ipvlan-shim
 sudo ip link delete ipvlan-shim
 ```
 
+## Автоматизация SSH
+
+Автоматизация настройки SSH описана в файле [ssh-automation.md](ssh-automation.md).
